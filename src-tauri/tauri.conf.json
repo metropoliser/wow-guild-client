@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/tauri-apps/tauri/dev/crates/tauri-config-schema/schema.json",
+  "productName": "Blutmond Loot Council",
+  "version": "0.1.0",
+  "identifier": "com.blutmondclan.lootcouncil",
+  "build": {
+    "frontendDist": "../frontend",
+    "beforeDevCommand": "",
+    "beforeBuildCommand": ""
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Blutmond Loot Council",
+        "url": "https://blutmondlc.apps.schmorty.com/",
+        "width": 1280,
+        "height": 800,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {
+    "updater": {
+      "endpoints": [
+        "https://github.com/metropoliser/wow-guild-client/releases/latest/download/latest.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEY3NDE3MDkwM0Y4REY1NzMKUldSejlZMC9rSEJCOTQ1TEZ6S2tpYVNGYThVMHJMcUQrQzdIRFA3a3d5MEc2SEVXNXV3L0NVVDEK"
+    }
+  }
+}
