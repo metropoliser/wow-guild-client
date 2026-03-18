@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 32px; overflow: hidden; background: #1e1f22; }
+
+    .titlebar {
+      height: 32px;
+      background: #1e1f22;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      -webkit-user-select: none;
+      font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    .titlebar-drag {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 12px;
+    }
+
+    .titlebar-icon {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: #5865f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .titlebar-icon svg {
+      width: 10px;
+      height: 10px;
+      fill: #fff;
+    }
+
+    .titlebar-title {
+      color: #b5bac1;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .titlebar-controls {
+      display: flex;
+      height: 100%;
+    }
+
+    .titlebar-btn {
+      width: 46px;
+      height: 100%;
+      border: none;
+      background: transparent;
+      color: #b5bac1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .titlebar-btn:hover {
+      background: #383a40;
+    }
+
+    .titlebar-btn.close:hover {
+      background: #da373c;
+      color: #fff;
+    }
+
+    .titlebar-btn svg {
+      width: 10px;
+      height: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="titlebar">
+    <div class="titlebar-drag" data-tauri-drag-region>
+      <div class="titlebar-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg>
+      </div>
+      <span class="titlebar-title" data-tauri-drag-region>Blutmond Loot Council</span>
+    </div>
+    <div class="titlebar-controls">
+      <button class="titlebar-btn" id="btn-min" title="Minimieren">
+        <svg viewBox="0 0 10 1" fill="currentColor"><rect width="10" height="1"/></svg>
+      </button>
+      <button class="titlebar-btn" id="btn-max" title="Maximieren">
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="9" height="9"/></svg>
+      </button>
+      <button class="titlebar-btn close" id="btn-close" title="Schlie&szlig;en">
+        <svg viewBox="0 0 10 10" stroke="currentColor" stroke-width="1.2">
+          <line x1="0" y1="0" x2="10" y2="10"/>
+          <line x1="10" y1="0" x2="0" y2="10"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <script>
+    var appWindow = window.__TAURI__.window.getCurrentWindow();
+    document.getElementById('btn-min').addEventListener('click', function() { appWindow.minimize(); });
+    document.getElementById('btn-max').addEventListener('click', function() { appWindow.toggleMaximize(); });
+    document.getElementById('btn-close').addEventListener('click', function() { appWindow.close(); });
+  </script>
+</body>
+</html>
